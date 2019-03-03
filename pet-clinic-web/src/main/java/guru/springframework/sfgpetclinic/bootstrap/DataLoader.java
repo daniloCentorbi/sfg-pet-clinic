@@ -5,6 +5,7 @@ import guru.springframework.sfgpetclinic.services.OwnerService;
 import guru.springframework.sfgpetclinic.services.PetTypeService;
 import guru.springframework.sfgpetclinic.services.SpecialityService;
 import guru.springframework.sfgpetclinic.services.VetService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -12,6 +13,7 @@ import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
+@Slf4j
 @Component
 public class DataLoader implements CommandLineRunner {
 
@@ -20,9 +22,8 @@ public class DataLoader implements CommandLineRunner {
     private final PetTypeService petTypeService;
     private final SpecialityService specialityService;
 
-
-    //interfaces injected into the constructor,
-    //IoC Automatically autowire 'em becouse are annotated by @Services
+    //interfaces injected into the component trough constructor,
+    //IoC Automatic autowire since are @Services
     public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService,SpecialityService specialityService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
@@ -82,6 +83,7 @@ public class DataLoader implements CommandLineRunner {
         listPet.add(pet1);
         listPet.add(pet2);
         listPet.forEach((v) -> System.out.println(" Id:" + v.getId() + " Name: " + v.getName()));
+
         owner1.setPets(listPet);
 
         ownerService.save(owner1);

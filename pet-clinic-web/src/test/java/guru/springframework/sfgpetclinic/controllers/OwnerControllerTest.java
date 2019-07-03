@@ -1,5 +1,6 @@
 package guru.springframework.sfgpetclinic.controllers;
 
+import guru.springframework.sfgpetclinic.exceptions.NotFoundException;
 import guru.springframework.sfgpetclinic.model.Owner;
 import guru.springframework.sfgpetclinic.services.OwnerService;
 import org.junit.jupiter.api.BeforeEach;
@@ -62,9 +63,19 @@ class OwnerControllerTest {
         mockMVC.perform(get("/owners/12"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("owners/ownerDetails"))
-                .andExpect(model().attribute("owner" , hasProperty("id" , is(1L))));
+                .andExpect(model().attribute("owner", hasProperty("id", is(1L))));
 
-        verify(ownerService,times(1)).findById(any());
+        verify(ownerService, times(1)).findById(any());
+    }
+
+    @Test
+    void showOwnerNotFound() throws Exception {
+        when(ownerService.findById(anyLong())).thenThrow(NotFoundException.class);
+
+        mockMVC.perform(get("/owners/12"))
+                .andExpect(status().isNotFound());
+
+        verify(ownerService, times(1)).findById(any());
     }
 
     @Test
@@ -77,18 +88,18 @@ class OwnerControllerTest {
     }
 
     @Test
-    void processFindFormReturnMany() throws Exception{
+    void processFindFormReturnMany() throws Exception {
         when(ownerService.findAllByLastNameLike(anyString())).thenReturn(listOwners);
 
         mockMVC.perform(get("/owners"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("owners/ownersList"))
                 .andExpect(model().attribute("selections", hasSize(2)));
-        verify(ownerService,times(1)).findAllByLastNameLike(any());
+        verify(ownerService, times(1)).findAllByLastNameLike(any());
     }
 
     @Test
-    void processFindFormReturnOne() throws Exception{
+    void processFindFormReturnOne() throws Exception {
         listOwners.clear();
         listOwners.add(Owner.builder().id(1L).build());
         when(ownerService.findAllByLastNameLike(anyString())).thenReturn(listOwners);
@@ -96,15 +107,15 @@ class OwnerControllerTest {
         mockMVC.perform(get("/owners"))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(view().name("redirect:/owners/1"));
-        verify(ownerService,times(1)).findAllByLastNameLike(any());
+        verify(ownerService, times(1)).findAllByLastNameLike(any());
     }
 
     @Test
-    void processFindFormReturnZero() throws Exception{
+    void processFindFormReturnZero() throws Exception {
         mockMVC.perform(get("/owners"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("owners/findOwners"));
-        verify(ownerService,times(1)).findAllByLastNameLike(any());
+        verify(ownerService, times(1)).findAllByLastNameLike(any());
     }
 
 

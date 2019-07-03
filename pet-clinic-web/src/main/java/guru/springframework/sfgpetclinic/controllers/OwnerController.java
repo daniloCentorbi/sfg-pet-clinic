@@ -1,5 +1,6 @@
 package guru.springframework.sfgpetclinic.controllers;
 
+import guru.springframework.sfgpetclinic.exceptions.NotFoundException;
 import guru.springframework.sfgpetclinic.model.Owner;
 import guru.springframework.sfgpetclinic.services.OwnerService;
 import org.springframework.stereotype.Controller;
@@ -33,6 +34,9 @@ public class OwnerController {
 
     @GetMapping("/{ownerId}")
     public String showOwner(Model model, @PathVariable("ownerId") Long ownerId) {
+        if(ownerService.findById(ownerId)==null){
+            throw new NotFoundException("Owner Not Found");
+        }
         model.addAttribute("owner", ownerService.findById(ownerId));
         return "owners/ownerDetails";
     }

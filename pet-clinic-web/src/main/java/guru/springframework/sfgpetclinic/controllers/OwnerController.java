@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 @RequestMapping("/owners")
 @Controller
@@ -33,10 +34,9 @@ public class OwnerController {
     }
 
     @GetMapping("/{ownerId}")
-    public ModelAndView showOwner(@PathVariable("ownerId") Long ownerId) {
-        ModelAndView mav = new ModelAndView("owners/ownerDetails");
-        mav.addObject(ownerService.findById(ownerId));
-        return mav;
+    public String showOwner(Model model, @PathVariable("ownerId") Long ownerId) {
+        model.addAttribute("owner", ownerService.findById(ownerId));
+        return "owners/ownerDetails";
     }
 
     @GetMapping("/find")
@@ -54,7 +54,7 @@ public class OwnerController {
         }
 
         // find owners by last name
-        List<Owner> results = ownerService.findAllByLastNameLike("%" + owner.getLastName() + "%");
+        Set<Owner> results = ownerService.findAllByLastNameLike("%" + owner.getLastName() + "%");
         if (results.isEmpty()) {
             // no owners found
             result.rejectValue("lastName", "notFound", "not found");

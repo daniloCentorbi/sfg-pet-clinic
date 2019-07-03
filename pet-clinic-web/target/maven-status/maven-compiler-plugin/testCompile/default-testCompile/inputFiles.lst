@@ -1,1 +1,4 @@
+/home/dani/IdeaProjects/sfg-pet-clinic/pet-clinic-web/src/test/java/guru/springframework/sfgpetclinic/controllers/OwnerControllerTest.java
+/home/dani/IdeaProjects/sfg-pet-clinic/pet-clinic-web/src/test/java/guru/springframework/sfgpetclinic/springjpadata/OwnerSDJpaServiceTest.java
 /home/dani/IdeaProjects/sfg-pet-clinic/pet-clinic-web/src/test/java/guru/springframework/sfgpetclinic/SfgPetClinicApplicationTests.java
+/home/dani/IdeaProjects/sfg-pet-clinic/pet-clinic-web/src/test/java/guru/springframework/sfgpetclinic/services/map/OwnerServiceMapTest.java

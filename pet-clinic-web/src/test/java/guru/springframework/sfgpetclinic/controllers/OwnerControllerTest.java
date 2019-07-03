@@ -65,7 +65,7 @@ class OwnerControllerTest {
                 .andExpect(view().name("owners/ownerDetails"))
                 .andExpect(model().attribute("owner", hasProperty("id", is(1L))));
 
-        verify(ownerService, times(1)).findById(any());
+        verify(ownerService, times(2)).findById(any());
     }
 
     @Test

@@ -3,6 +3,8 @@ package guru.springframework.sfgpetclinic.controllers;
 import guru.springframework.sfgpetclinic.exceptions.NotFoundException;
 import guru.springframework.sfgpetclinic.model.Owner;
 import guru.springframework.sfgpetclinic.services.OwnerService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -11,11 +13,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
-import java.util.Collection;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+@Slf4j
 @RequestMapping("/owners")
 @Controller
 public class OwnerController {
@@ -34,7 +35,7 @@ public class OwnerController {
 
     @GetMapping("/{ownerId}")
     public String showOwner(Model model, @PathVariable("ownerId") Long ownerId) {
-        if(ownerService.findById(ownerId)==null){
+        if(ownerService.findById(ownerId) == null){
             throw new NotFoundException("Owner Not Found");
         }
         model.addAttribute("owner", ownerService.findById(ownerId));
@@ -47,7 +48,7 @@ public class OwnerController {
         return "owners/findOwners";
     }
 
-    @GetMapping({"","/", "/index", "/index.html"})
+    @GetMapping({"", "/", "/index", "/index.html"})
     public String processFindForm(Owner owner, BindingResult result, Model model) {
 
         // allow parameterless GET request for /owners to return all records
@@ -105,6 +106,16 @@ public class OwnerController {
             ownerService.save(owner);
             return "redirect:/owners/" + owner.getId();
         }
+    }
+
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ExceptionHandler(NotFoundException.class)
+    public ModelAndView handleNotFound(Exception exception) {
+        log.error("Handling Not Found exception");
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("404Error");
+        modelAndView.addObject("exception", exception);
+        return modelAndView;
     }
 
 }

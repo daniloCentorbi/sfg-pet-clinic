@@ -12,8 +12,8 @@
 /home/dani/IdeaProjects/sfg-pet-clinic/pet-clinic-data/src/main/java/guru/springframework/sfgpetclinic/repositories/OwnerRepository.java
 /home/dani/IdeaProjects/sfg-pet-clinic/pet-clinic-data/src/main/java/guru/springframework/sfgpetclinic/services/map/AbstractMapService.java
 /home/dani/IdeaProjects/sfg-pet-clinic/pet-clinic-data/src/main/java/guru/springframework/sfgpetclinic/repositories/VetRepository.java
-/home/dani/IdeaProjects/sfg-pet-clinic/pet-clinic-data/src/main/java/guru/springframework/sfgpetclinic/services/OwnerService.java
 /home/dani/IdeaProjects/sfg-pet-clinic/pet-clinic-data/src/main/java/guru/springframework/sfgpetclinic/services/map/PetServiceMap.java
+/home/dani/IdeaProjects/sfg-pet-clinic/pet-clinic-data/src/main/java/guru/springframework/sfgpetclinic/services/OwnerService.java
 /home/dani/IdeaProjects/sfg-pet-clinic/pet-clinic-data/src/main/java/guru/springframework/sfgpetclinic/model/Owner.java
 /home/dani/IdeaProjects/sfg-pet-clinic/pet-clinic-data/src/main/java/guru/springframework/sfgpetclinic/springjpadata/PetTypeSDJpaService.java
 /home/dani/IdeaProjects/sfg-pet-clinic/pet-clinic-data/src/main/java/guru/springframework/sfgpetclinic/services/map/SpecialityServiceMap.java

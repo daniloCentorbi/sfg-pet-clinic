@@ -59,4 +59,16 @@ class OwnerControllerTest {
         .andExpect(model().attribute("owners" , hasSize(2)));
     }
 
+
+    @Test
+    void showOwner() {
+    }
+
+    @Test
+    void initFindForm() {
+    }
+
+    @Test
+    void processFindForm() {
+    }
 }

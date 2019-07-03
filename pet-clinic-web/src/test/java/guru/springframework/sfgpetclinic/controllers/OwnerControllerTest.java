@@ -52,17 +52,6 @@ class OwnerControllerTest {
         mockMVC = MockMvcBuilders.standaloneSetup(controller).build();
     }
 
-    @Test
-    void listOwner() throws Exception {
-        //mock interaction
-        when(ownerService.findAll()).thenReturn(listOwners);
-
-        mockMVC.perform(get("/owners"))
-                .andExpect(status().is(200))
-        .andExpect(view().name("owners/index"))
-        .andExpect(model().attribute("owners" , hasSize(2)));
-    }
-
 
     @Test
     void showOwner() throws Exception {

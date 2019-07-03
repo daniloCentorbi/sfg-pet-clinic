@@ -70,5 +70,10 @@ public class OwnerController {
         }
     }
 
+    @GetMapping("/new")
+    public String initCreationForm(Model model) {
+        model.addAttribute("owner", Owner.builder().build());
+        return "createUpdateOwnerForm";
+    }
 
 }

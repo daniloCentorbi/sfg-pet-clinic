@@ -17,13 +17,9 @@ import java.util.Set;
 public class VetSDJpaService implements VetService {
 
     private final VetRepository vetRepository;
-    private final OwnerRepository ownerRepository;
-    private final VisitReposotory visitReposotory;
 
-    public VetSDJpaService(VetRepository vetRepository, OwnerRepository ownerRepository, VisitReposotory visitReposotory) {
+    public VetSDJpaService(VetRepository vetRepository) {
         this.vetRepository = vetRepository;
-        this.ownerRepository = ownerRepository;
-        this.visitReposotory = visitReposotory;
     }
 
     @Override
@@ -40,7 +36,7 @@ public class VetSDJpaService implements VetService {
     public Set<Vet> findAll() {
         Set<Vet> vetList = new HashSet<>();
         vetRepository.findAll().forEach(vetList::add);
-        return null;
+        return vetList;
     }
 
     @Override

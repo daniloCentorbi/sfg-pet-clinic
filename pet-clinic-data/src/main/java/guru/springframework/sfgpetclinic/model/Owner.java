@@ -41,7 +41,6 @@ public class Owner extends Person {
     @OneToMany( cascade = CascadeType.ALL , mappedBy = "owner")
     private Set<Pet> pets = new HashSet<>();
 
-
     protected Set<Pet> getPetsInternal() {
         if (this.pets == null) {
             this.pets = new HashSet<>();
@@ -68,5 +67,6 @@ public class Owner extends Person {
         }
         return null;
     }
+
 
 }

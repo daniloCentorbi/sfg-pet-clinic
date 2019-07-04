@@ -118,14 +118,4 @@ public class OwnerController {
         return modelAndView;
     }
 
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ExceptionHandler(NumberFormatException.class)
-    public ModelAndView handleNumberFormatException(Exception exception) {
-        log.error("Handling Not Found exception");
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("404Error");
-        modelAndView.addObject("exception", exception);
-        return modelAndView;
-    }
-
 }

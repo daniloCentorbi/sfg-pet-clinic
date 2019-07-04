@@ -39,9 +39,6 @@ class OwnerControllerTest {
     @Mock
     OwnerService ownerService;
 
-    @Mock
-    Model model;
-
     MockMvc mockMVC;
 
     Set<Owner> listOwners;
@@ -52,7 +49,9 @@ class OwnerControllerTest {
         listOwners = new HashSet<>();
         listOwners.add(Owner.builder().id(1L).lastName("White").build());
         listOwners.add(Owner.builder().id(2L).lastName("Smith").build());
-        mockMVC = MockMvcBuilders.standaloneSetup(controller).build();
+        mockMVC = MockMvcBuilders.standaloneSetup(controller)
+                .setControllerAdvice(new ControllerExceptionHandler())
+                .build();
     }
 
 
@@ -77,6 +76,14 @@ class OwnerControllerTest {
 
         verify(ownerService, times(1)).findById(any());
     }
+
+    @Test
+    void showOwnerNumberFormatException() throws Exception {
+        mockMVC.perform(get("/owners/asdf"))
+                .andExpect(status().isBadRequest());
+        verifyZeroInteractions(ownerService);
+    }
+
 
     @Test
     void initFindForm() throws Exception {
@@ -112,6 +119,7 @@ class OwnerControllerTest {
 
     @Test
     void processFindFormReturnZero() throws Exception {
+
         mockMVC.perform(get("/owners"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("owners/findOwners"));

@@ -4,6 +4,7 @@ import guru.springframework.sfgpetclinic.model.Pet;
 import guru.springframework.sfgpetclinic.model.Visit;
 import guru.springframework.sfgpetclinic.services.PetService;
 import guru.springframework.sfgpetclinic.services.VisitService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -59,8 +60,11 @@ public class VisitController {
 
     // Spring MVC calls method loadPetWithVisit(...) before processNewVisitForm is called
     @PostMapping("/owners/{ownerId}/pets/{petId}/visits/new")
-    public String processNewVisitForm(@Valid Visit visit, BindingResult result) {
-        if (result.hasErrors()) {
+    public String processNewVisitForm(@Valid @ModelAttribute("visit") Visit visit, BindingResult result) {
+        if(result.hasErrors()){
+            result.getAllErrors().forEach(objectError -> {
+                log.debug(objectError.toString());
+            });
             return "pets/createUpdateVisitForm";
         } else {
             visitService.save(visit);

@@ -1,6 +1,11 @@
+/home/dani/IdeaProjects/sfg-pet-clinic/pet-clinic-web/src/main/java/guru/springframework/sfgpetclinic/controllers/VisitController.java
 /home/dani/IdeaProjects/sfg-pet-clinic/pet-clinic-web/src/main/java/guru/springframework/sfgpetclinic/SfgPetClinicApplication.java
+/home/dani/IdeaProjects/sfg-pet-clinic/pet-clinic-web/src/main/java/guru/springframework/sfgpetclinic/controllers/ControllerExceptionHandler.java
+/home/dani/IdeaProjects/sfg-pet-clinic/pet-clinic-web/src/main/java/guru/springframework/sfgpetclinic/controllers/PetController.java
 /home/dani/IdeaProjects/sfg-pet-clinic/pet-clinic-web/src/main/java/guru/springframework/sfgpetclinic/exceptions/NotFoundException.java
+/home/dani/IdeaProjects/sfg-pet-clinic/pet-clinic-web/src/main/java/guru/springframework/sfgpetclinic/formatters/PetTypeFormatter.java
 /home/dani/IdeaProjects/sfg-pet-clinic/pet-clinic-web/src/main/java/guru/springframework/sfgpetclinic/controllers/OwnerController.java
 /home/dani/IdeaProjects/sfg-pet-clinic/pet-clinic-web/src/main/java/guru/springframework/sfgpetclinic/bootstrap/DataLoader.java
 /home/dani/IdeaProjects/sfg-pet-clinic/pet-clinic-web/src/main/java/guru/springframework/sfgpetclinic/controllers/VetController.java
+/home/dani/IdeaProjects/sfg-pet-clinic/pet-clinic-web/src/main/java/guru/springframework/sfgpetclinic/exceptions/NumberFormatException.java
 /home/dani/IdeaProjects/sfg-pet-clinic/pet-clinic-web/src/main/java/guru/springframework/sfgpetclinic/controllers/IndexController.java

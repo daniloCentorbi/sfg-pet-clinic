@@ -1,10 +1,10 @@
 -------------------------------------------------------------------------------
 Test set: guru.springframework.sfgpetclinic.SfgPetClinicApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 2.075 s <<< FAILURE! - in guru.springframework.sfgpetclinic.SfgPetClinicApplicationTests
-contextLoads  Time elapsed: 0.009 s  <<< ERROR!
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 2.033 s <<< FAILURE! - in guru.springframework.sfgpetclinic.SfgPetClinicApplicationTests
+contextLoads  Time elapsed: 0.007 s  <<< ERROR!
 java.lang.IllegalStateException: Failed to load ApplicationContext
-Caused by: java.lang.IllegalStateException: Failed to introspect Class [guru.springframework.sfgpetclinic.controllers.PetController] from ClassLoader [jdk.internal.loader.ClassLoaders$AppClassLoader@799f7e29]
+Caused by: java.lang.IllegalStateException: Failed to introspect Class [guru.springframework.sfgpetclinic.controllers.PetController] from ClassLoader [jdk.internal.loader.ClassLoaders$AppClassLoader@4b85612c]
 Caused by: java.lang.VerifyError: 
 Expecting a stackmap frame at branch target 156
 Exception Details:

@@ -19,6 +19,16 @@
     <name>sfg-pet-clinic</name>
     <description>Spring Boot Pet Clinic</description>
 
+    <distributionManagement>
+        <repository>
+            <uniqueVersion>false</uniqueVersion>
+            <id>deploy1</id>
+            <name>My-sfg-repository</name>
+            <url>file:///home/dani/.m2</url>
+            <layout>default</layout>
+        </repository>
+    </distributionManagement>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>

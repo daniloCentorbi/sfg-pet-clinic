@@ -34,7 +34,7 @@ public class DataLoader implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         int count = petTypeService.findAll().size();
-
+        System.out.println("running...");
         if(count == 0){
             loadData();
         }
@@ -68,24 +68,22 @@ public class DataLoader implements CommandLineRunner {
 
         Pet pet1 = new Pet();
         pet1.setPetType(savedDogPetType);
-        pet1.setName("Dino");
+        pet1.setName("Dodi");
         pet1.setBirthDate(LocalDate.now());
         pet1.setOwner(owner1);
 
         Pet pet2 = new Pet();
         pet2.setPetType(savedCatPetType);
-        pet2.setName("Drill");
+        pet2.setName("Drilly");
         pet2.setBirthDate(LocalDate.now());
         pet2.setOwner(owner1);
 
         Set<Pet> listPet = new HashSet<>();
         listPet.add(pet1);
         listPet.add(pet2);
-        listPet.forEach((v) -> System.out.println(" Id:" + v.getId() + " Name: " + v.getName()));
         owner1.setPets(listPet);
 
         ownerService.save(owner1);
-        listPet.forEach((v) -> System.out.println(" Id:" + v.getId() + " Name: " + v.getName()));
 
         Owner owner2 = new Owner();
         owner2.setFirstName("Jerry");
@@ -100,10 +98,6 @@ public class DataLoader implements CommandLineRunner {
         pet3.setBirthDate(LocalDate.now());
         pet3.setOwner(owner2);
         owner2.getPets().add(pet3);
-
-        owner2.getPets().forEach(pet -> {
-            System.out.println(pet.getName() + " Born on " + pet.getBirthDate());
-                });
 
         ownerService.save(owner2);
 

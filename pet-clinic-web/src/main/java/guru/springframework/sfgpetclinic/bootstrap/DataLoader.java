@@ -101,8 +101,8 @@ public class DataLoader implements CommandLineRunner {
         ownerService.save(owner2);
 
 
-        List<Person> vets = new ArrayList<>();
-        vets = apiService.getVets();
+        List<Person> vets =  apiService.getVets();
+
 
         vets.stream().forEach(vet -> {
             Vet veterinarian = new Vet();

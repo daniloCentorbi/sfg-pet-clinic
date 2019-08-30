@@ -1,29 +1,28 @@
 package guru.springframework.sfgpetclinic.bootstrap;
 
 import guru.springframework.sfgpetclinic.model.*;
-import guru.springframework.sfgpetclinic.services.OwnerService;
-import guru.springframework.sfgpetclinic.services.PetTypeService;
-import guru.springframework.sfgpetclinic.services.SpecialityService;
-import guru.springframework.sfgpetclinic.services.VetService;
+import guru.springframework.sfgpetclinic.services.*;
+import guru.springframework.sfgpetclinic.springjpadata.ApiServiceImpl;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Component
 public class DataLoader implements CommandLineRunner {
 
+    private final ApiService apiService;
     private final OwnerService ownerService;
     private final VetService vetService;
     private final PetTypeService petTypeService;
     private final SpecialityService specialityService;
 
-
-    //interfaces injected into the constructor,
-    //IoC Automatically autowire 'em becouse are annotated by @Services
-    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService,SpecialityService specialityService) {
+    public DataLoader(ApiService apiService, OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialityService specialityService) {
+        this.apiService = apiService;
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
@@ -101,21 +100,17 @@ public class DataLoader implements CommandLineRunner {
 
         ownerService.save(owner2);
 
-        Vet vet1 = new Vet();
-        vet1.setFirstName("Berry");
-        vet1.setLastName("Lindon");
-        vet1.getSpecialities().add(radiology);
-        vet1.getSpecialities().add(dentistry);
 
-        vetService.save(vet1);
+        List<Person> vets = new ArrayList<>();
+        vets = apiService.getVets();
 
-        Vet vet2 = new Vet();
-        vet2.setFirstName("John");
-        vet2.setLastName("Strawn");
+        vets.stream().forEach(vet -> {
+            Vet veterinarian = new Vet();
+            veterinarian.setFirstName(vet.getFirstName());
+            veterinarian.setLastName(vet.getLastName());
+            veterinarian.getSpecialities().add(radiology);
+            vetService.save(veterinarian);
+        });
 
-
-        vet2.getSpecialities().addAll(specialityService.findAll());
-
-        vetService.save(vet2);
     }
 }

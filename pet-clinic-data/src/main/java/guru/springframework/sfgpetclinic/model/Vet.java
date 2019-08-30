@@ -1,5 +1,6 @@
 package guru.springframework.sfgpetclinic.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
@@ -13,6 +14,7 @@ import java.util.Set;
 @Builder
 @Entity
 @Table(name = "vets")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Vet extends Person {
 
     @ManyToMany

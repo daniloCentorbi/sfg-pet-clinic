@@ -7,14 +7,9 @@ Pet clinic application developed following the spring framework course.
 
 # Running petclinic locally
 
-Petclinic is a Spring Boot application built using Maven. You can build a jar file and run it from the command line:
+Petclinic is a Spring Boot application built using Maven. You can build a jar file and run it from the command line and
 
-git clone git@github.com:daniloCentorbi/sfg-pet-clinic.git
-cd spring-petclinic
-./mvnw package
-java -jar target/*.jar
-
-You can then access petclinic here: http://localhost:8080/
+then access petclinic here: http://localhost:8080/
 
 # Running petclinic as container
 

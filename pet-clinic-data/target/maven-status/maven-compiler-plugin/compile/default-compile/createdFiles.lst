@@ -18,6 +18,7 @@ guru/springframework/sfgpetclinic/services/map/OwnerServiceMap.class
 guru/springframework/sfgpetclinic/model/Person.class
 guru/springframework/sfgpetclinic/services/map/AbstractMapService.class
 guru/springframework/sfgpetclinic/services/SpecialityService.class
+guru/springframework/sfgpetclinic/model/PersonsList.class
 guru/springframework/sfgpetclinic/repositories/PetRepository.class
 guru/springframework/sfgpetclinic/services/VetService.class
 guru/springframework/sfgpetclinic/repositories/PetTypeRepository.class

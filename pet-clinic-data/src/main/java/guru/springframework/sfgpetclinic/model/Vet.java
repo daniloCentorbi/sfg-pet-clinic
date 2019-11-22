@@ -14,7 +14,7 @@ import java.util.Set;
 @Builder
 @Entity
 @Table(name = "vets")
-@JsonIgnoreProperties(ignoreUnknown = true)
+//@JsonIgnoreProperties(ignoreUnknown = true)
 public class Vet extends Person {
 
     @ManyToMany

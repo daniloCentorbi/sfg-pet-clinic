@@ -39,10 +39,10 @@ jobs:
             - ~/.m2
           key: v1-dependencies-{{ checksum "pom.xml" }}
 
-      #
-      #- run tests! and gen code coverage
-      #- run: mvn integration-test cobertura:cobertura
 
-      #- run:
-      #    name: Send to CodeCov
-      #    command: bash <(curl -s https://codecov.io/bash)
+      - run tests! and gen code coverage
+      - run: mvn integration-test jacoco:jacoco
+
+      - run:
+          name: Send to CodeCov
+          command: bash <(curl -s https://codecov.io/bash)
